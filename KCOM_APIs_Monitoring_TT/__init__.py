@@ -7,7 +7,7 @@ from Reader import read_json
 def main(mytimer: func.TimerRequest) -> None:
     logging.info('GFO function run')
 
-    logging.info('Version: 1.2.2 - 16/08/24-18:34:00')
+    logging.info('Version: 1.2.2 - 16/08/24-18:42:00')
     url = "https://gfoapi.ey.com/nav/bcapi/client-kcom/GFO180-EYGS/api/v2.0/companies"
     logging.info(call_api(url,get_token(prodCredentials),prodCredentials,"GET",{}))
     

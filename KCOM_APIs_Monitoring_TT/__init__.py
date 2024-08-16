@@ -7,8 +7,7 @@ from Reader import read_json
 def main(mytimer: func.TimerRequest) -> None:
     logging.info('GFO function run')
 
-    #Version 1.2
-    logging.info('Version: 1.2.1 - 16/08/24-17:38:00')
+    logging.info('Version: 1.2.2 - 16/08/24-18:34:00')
     url = "https://gfoapi.ey.com/nav/bcapi/client-kcom/GFO180-EYGS/api/v2.0/companies"
     logging.info(call_api(url,get_token(prodCredentials),prodCredentials,"GET",{}))
     
@@ -16,4 +15,4 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info(call_api(url,get_token(uatCredentials),uatCredentials,"GET",{}))
     
     url = "https://gfoapi.ey.com/nav/bcapi/client-kcom/GFO180-EYGS/api/gfo/integration/v1.0/companies(478df089-dff3-ee11-a85b-000d3ab576d1)/customerActions(0)/Microsoft.NAV.customerFinancialDetails"
-    logging.info(call_api(url,get_token(prodCredentials),prodCredentials,"GET",read_json("sampleData.json")))
+    logging.info(call_api(url,get_token(prodCredentials),prodCredentials,"POST",read_json("sampleData.json")))

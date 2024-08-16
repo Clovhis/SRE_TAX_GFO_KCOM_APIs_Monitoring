@@ -32,9 +32,10 @@ def call_api(url,token,credentials,method,body):
     
     headers = {
         'x-api-key': credentials.api_key,
-        'Authorization': 'Bearer ' + str(token)
+        'Authorization': 'Bearer ' + str(token),
+        'Content-Type': 'application/json'
     }
 
     response = requests.request(method, url, headers=headers, data=body)
 
-    return(url,response.status_code, response.reason)    
+    return(url,response.status_code, response.reason)

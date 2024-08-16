@@ -13,5 +13,3 @@ def get_urls():
         print(f"Key: {key} | Value: {value}")
         url_dict[key] = value
     return url_dict
-
-print(get_urls())

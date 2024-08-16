@@ -1,0 +1,19 @@
+Hi SRE Team,
+We need to implement a monitor alert in order to check different APIs.
+In this case we will start with 5, in the coming weeks we will increase the number of it because we need to monitor every company, and for every company so far we have 5 different APIs:
+
+API Endpoint
+Kcom Integration Testing Co. - customers
+https://gfoapiu.ey.com/navbsc/bcapi/ada-kcom/GFO180-EYGS/api/gfo/datasets/v1.0/companies(07528BCA-43BF-EE11-A880-000D3A6547B5)/customers
+
+Kcom Integration Testing Co. - customerLedgerEntries
+https://gfoapiu.ey.com/navbsc/bcapi/ada-kcom/GFO180-EYGS/api/gfo/datasets/v1.0/companies(07528BCA-43BF-EE11-A880-000D3A6547B5)/customerLedgerEntries
+
+Kcom Integration Testing Co. - detailedCustomerLedgerEntries
+https://gfoapiu.ey.com/navbsc/bcapi/ada-kcom/GFO180-EYGS/api/gfo/datasets/v1.0/companies(07528BCA-43BF-EE11-A880-000D3A6547B5)/detailedCustomerLedgerEntries
+
+Kcom Integration Testing Co. - paymentMethods
+https://gfoapiu.ey.com/navbsc/bcapi/ada-kcom/GFO180-EYGS/api/gfo/datasets/v1.0/companies(07528BCA-43BF-EE11-A880-000D3A6547B5)/paymentMethods
+
+Kcom Integration Testing Co. - deletedRecords
+https://gfoapiu.ey.com/navbsc/bcapi/ada-kcom/GFO180-EYGS/api/gfo/datasets/v1.0/companies(07528) > Algo me comi aca que no lo copie bien

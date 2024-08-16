@@ -1,0 +1,7 @@
+{
+    "Kcom Integration Testing Co. - customers" : "https://gfoapiu.ey.com/navbsc/bcapi/ada-kcom/GFO180-EYGS/api/gfo/datasets/v1.0/companies(07528BCA-43BF-EE11-A880-000D3A6547B5)/customers",
+    "Kcom Integration Testing Co. - customerLedgerEntries":"https://gfoapiu.ey.com/navbsc/bcapi/ada-kcom/GFO180-EYGS/api/gfo/datasets/v1.0/companies(07528BCA-43BF-EE11-A880-000D3A6547B5)/customerLedgerEntries",
+    "Kcom Integration Testing Co. - detailedCustomerLedgerEntries":"https://gfoapiu.ey.com/navbsc/bcapi/ada-kcom/GFO180-EYGS/api/gfo/datasets/v1.0/companies(07528BCA-43BF-EE11-A880-000D3A6547B5)/detailedCustomerLedgerEntries",
+    "Kcom Integration Testing Co. - paymentMethods":"https://gfoapiu.ey.com/navbsc/bcapi/ada-kcom/GFO180-EYGS/api/gfo/datasets/v1.0/companies(07528BCA-43BF-EE11-A880-000D3A6547B5)/paymentMethods",
+    "Kcom Integration Testing Co. - deletedRecords":"https://gfoapiu.ey.com/navbsc/bcapi/ada-kcom/GFO180-EYGS/api/gfo/datasets/v1.0/companies(07528)"
+}

@@ -1,0 +1,7 @@
+{
+    "customerNumber": "AP6883504",
+    "invoices": true,
+    "payments": true,
+    "fromDate": "2024-07-01",
+    "toDate": "2024-07-31"
+}

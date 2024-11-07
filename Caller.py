@@ -29,13 +29,25 @@ def get_token(credentials):
 
 def call_api(url,token,credentials,method,body):
     logging.info('Calling GFO API')
-    
-    headers = {
-        'x-api-key': credentials.api_key,
-        'Authorization': 'Bearer ' + str(token),
-        'Content-Type': 'application/json'
-    }
+    try:    
+        headers = {
+            'x-api-key': credentials.api_key,
+            'Authorization': 'Bearer ' + str(token),
+            'Content-Type': 'application/json'
+        }
 
-    response = requests.request(method, url, headers=headers, data=body)
+        response = requests.request(method, url, headers=headers, data=body)
 
-    return(url,response.status_code, response.reason)
+        response_mesagge = str
+
+        if len(str(response.text)) > 0:
+            response_mesagge = "ReponseNotEmpty"
+        else:
+            response_mesagge = "EmptyResponse"
+
+        return(url,response.status_code, response.reason,response_mesagge) 
+
+    except Exception as e:
+        logging.error('Exception raised while calling the API. See details')
+        logging.info(str(e))
+        return(url,0, "Exception raised while calling the API","Couldn't call the API",str(e))

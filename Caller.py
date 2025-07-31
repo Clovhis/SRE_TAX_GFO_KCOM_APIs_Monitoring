@@ -27,12 +27,11 @@ def get_token(credentials):
 
     return(access_token)
 
-def call_api(url,token,credentials,method,body):
-    logging.info('Calling GFO API')
-    try:    
+def call_api(url, token, method, body):
+    """Call the specified URL with the given HTTP method and body."""
+    try:
         headers = {
-            'x-api-key': credentials.api_key,
-            'Authorization': 'Bearer ' + str(token),
+            'Authorization': f'Bearer {token}',
             'Content-Type': 'application/json'
         }
 

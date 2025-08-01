@@ -1,5 +1,5 @@
 from Models import APIs
-from ErrorHandler import validationException
+from ErrorHandler import ValidationError
 
 # ---------------------------------------------------------------------------
 # Response Validation
@@ -27,6 +27,6 @@ def checkStatus(response_list):
         if count > 0:
             return False
     except Exception as e:
-        raise validationException(
-            "The API call has failed. Please check the URL and try again."
+        raise ValidationError(
+            "The API call has failed. Please check the URL and try again.", e
         )

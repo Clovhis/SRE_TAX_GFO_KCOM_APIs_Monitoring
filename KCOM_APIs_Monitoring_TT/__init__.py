@@ -2,12 +2,17 @@ from Caller import get_token, call_api
 from Credentials import prodCredentials, uatCredentials
 from Reader import read_json
 import logging
+import os
 import azure.functions as func
 
 
 def main(mytimer: func.TimerRequest) -> None:
     logging.info('GFO function run')
     logging.info('Version: 1.3.1 - 13/02/25-13:21')
+
+    data_path = os.path.abspath(
+        os.path.join(os.path.dirname(__file__), '..', 'sampleData.json')
+    )
 
     api_calls = [
         {
@@ -36,7 +41,7 @@ def main(mytimer: func.TimerRequest) -> None:
             ),
             "credentials": prodCredentials,
             "method": "POST",
-            "body": read_json("sampleData.json"),
+            "body": read_json(data_path),
         },
         {
             "url": (

@@ -2,37 +2,57 @@ import requests
 import json
 import logging
 
+# ---------------------------------------------------------------------------
+# Token Retrieval
+# Generates an OAuth access token using client credentials. The token is
+# required for authenticating subsequent API calls. Successful retrieval is
+# logged for monitoring purposes.
+# ---------------------------------------------------------------------------
 def get_token(credentials):
     print('Retrieving token..')
-    
-    url = "https://login.microsoftonline.com/5b973f99-77df-4beb-b27d-aa0c70b8482c/oauth2/token"
 
-    payload = {'grant_type': 'client_credentials',
-    'client_secret': credentials.client_secret,
-    'client_id': credentials.client_id,
-    'resource': credentials.scope
+    url = (
+        "https://login.microsoftonline.com/"
+        "5b973f99-77df-4beb-b27d-aa0c70b8482c/oauth2/token"
+    )
+
+    payload = {
+        'grant_type': 'client_credentials',
+        'client_secret': credentials.client_secret,
+        'client_id': credentials.client_id,
+        'resource': credentials.scope,
     }
 
     headers = {
-    'Cookie': 'esctx=PAQABBwEAAADnfolhJpSnRYB1SVj-Hgd88XggGyRX_25ZLkBfC445RMtnBTN3eK4ei0DIrYVUwgK7umJIlXmVOe-dm80V1sXSYpBgRPMEdb4wItGFF92yrcEqomf9ITDNDJD8UBVAWH5FjpTctNiiYO1YiKQD8w-rQp-ReWh2xDGCZmhcdjuX44ttfZAKioyl9hCEFvJclUcgAA; fpc=Am3cdgFaFP5MkPvhUebKIEnZVqtnAQAAAFzAvd0OAAAA; stsservicecookie=estsfd; x-ms-gateway-slice=estsfd'
+        'Cookie': (
+            'esctx=PAQABBwEAAADnfolhJpSnRYB1SVj-Hgd88XggGyRX_25ZLkBfC445RMtnBTN3eK4ei0DIrYVUwgK7umJIlXmVOe-dm80V1sXSYpBgRPMEdb'
+            '4wItGFF92yrcEqomf9ITDNDJD8UBVAWH5FjpTctNiiYO1YiKQD8w-rQp-ReWh2xDGCZmhcdjuX44ttfZAKioyl9hCEFvJclUcgAA; '
+            'fpc=Am3cdgFaFP5MkPvhUebKIEnZVqtnAQAAAFzAvd0OAAAA; '
+            'stsservicecookie=estsfd; x-ms-gateway-slice=estsfd'
+        )
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
 
     logging.info('Token retrieved')
-    
+
     json_string = response.text
     data = json.loads(json_string)
     access_token = data['access_token']
 
-    return(access_token)
+    return access_token
 
+# ---------------------------------------------------------------------------
+# API Invocation
+# Sends HTTP requests with the bearer token. The api_key header has been
+# removed per client request, leaving token-based authentication only. All
+# responses and errors are logged for observability.
+# ---------------------------------------------------------------------------
 def call_api(url, token, method, body):
-    """Call the specified URL with the given HTTP method and body."""
     try:
         headers = {
             'Authorization': f'Bearer {token}',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         }
 
         response = requests.request(method, url, headers=headers, data=body)
@@ -44,9 +64,15 @@ def call_api(url, token, method, body):
         else:
             response_mesagge = "EmptyResponse"
 
-        return(url,response.status_code, response.reason,response_mesagge) 
+        return (url, response.status_code, response.reason, response_mesagge)
 
     except Exception as e:
         logging.error('Exception raised while calling the API. See details')
         logging.info(str(e))
-        return(url,0, "Exception raised while calling the API","Couldn't call the API",str(e))
+        return (
+            url,
+            0,
+            "Exception raised while calling the API",
+            "Couldn't call the API",
+            str(e),
+        )

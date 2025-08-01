@@ -1,10 +1,18 @@
 import os
 
+# ---------------------------------------------------------------------------
+# Data Models
+# Lightweight classes used across modules to pass structured data such as
+# credentials, API metadata and log entries.
+# ---------------------------------------------------------------------------
+
 class Config:
-    scope = str 
-    client_id = str 
+    """Holds authentication details. api_key kept for backward compatibility."""
+
+    scope = str
+    client_id = str
     client_secret = str
-    grant_type = str 
+    grant_type = str
     api_key = str
 
     def __init__(self, scope, client_id, client_secret, grant_type, api_key):
@@ -14,22 +22,30 @@ class Config:
         self.grant_type = grant_type
         self.api_key = api_key
 
+
 class APIs:
+    """Represents an API endpoint and the result of a monitoring call."""
+
     url = str
     response_code = int
     status = str
     error_message = str
+
     def __init__(self, url, response_code, status, error_message):
         self.url = url
         self.response_code = response_code
         self.status = status
         self.error_message = error_message
 
+
 class Logger:
+    """Standard log entry used by logging helpers."""
+
     event = str
     date = str
     message = str
-    def __init__(self,event,date,message):
+
+    def __init__(self, event, date, message):
         self.event = event
         self.date = date
         self.message = message

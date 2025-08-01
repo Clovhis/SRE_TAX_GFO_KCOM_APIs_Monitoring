@@ -1,20 +1,31 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# KCOM APIs Monitoring
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Tools for monitoring KCOM TAX/GFO APIs using simple Python helpers. The
+modules obtain an OAuth token, call API endpoints and record the results for
+further analysis by the SRE team.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Getting Started
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Set the required environment variables for each environment:
+   - `prod_scope`, `prod_client_id`, `prod_client_secret`, `prod_api_key`
+   - `uat_scope`, `uat_client_id`, `uat_client_secret`, `uat_api_key`
+   The `api_key` values are kept for compatibility but are not sent in request
+   headers.
+3. Use the functions in `Caller.py` to retrieve an OAuth token and call APIs.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Build and Test
+
+Run a basic syntax check on the modules:
+```bash
+python -m py_compile Caller.py Logger.py Models.py Credentials.py \
+    Checker.py ErrorHandler.py Formater.py Reader.py
+```
+
+## Contribute
+
+Pull requests are welcome. Please ensure new code includes clear comments and
+runs without errors before submission.

@@ -39,8 +39,7 @@ class HttpException(Exception):
                 )
             )
 
-
-# I need to understand how this work further
+# TODO: Review exception handling logic to ensure comprehensive coverage
 class ValidationError(Exception):
     def __init__(self, message, errors):
         # Call the base class constructor with the parameters it needs

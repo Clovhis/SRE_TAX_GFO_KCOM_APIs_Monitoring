@@ -9,7 +9,7 @@ import logging
 # logged for monitoring purposes.
 # ---------------------------------------------------------------------------
 def get_token(credentials):
-    print('Retrieving token..')
+    logging.info('Retrieving token..')
 
     url = (
         "https://login.microsoftonline.com/"
@@ -57,14 +57,14 @@ def call_api(url, token, method, body):
 
         response = requests.request(method, url, headers=headers, data=body)
 
-        response_mesagge = str
+        response_message = ""
 
         if len(str(response.text)) > 0:
-            response_mesagge = "ReponseNotEmpty"
+            response_message = "ResponseNotEmpty"
         else:
-            response_mesagge = "EmptyResponse"
+            response_message = "EmptyResponse"
 
-        return (url, response.status_code, response.reason, response_mesagge)
+        return (url, response.status_code, response.reason, response_message)
 
     except Exception as e:
         logging.error('Exception raised while calling the API. See details')

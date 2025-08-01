@@ -1,4 +1,5 @@
 import json
+import logging
 
 # ---------------------------------------------------------------------------
 # Configuration Reader
@@ -15,6 +16,6 @@ url_dict = {}
 
 def get_urls(path):
     for key, value in json.loads(read_json(path)).items():
-        print(f"Key: {key} | Value: {value}")
+        logging.debug(f"Key: {key} | Value: {value}")
         url_dict[key] = value
     return url_dict
